@@ -1,0 +1,38 @@
+<div class="home mt-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1 btn">
+        <ul class="nav nav-tabs nav-justified sidebar-nav edit">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#add" role="tab" aria-controls="add">{{ 'my_account.add_address' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#chPass" role="tab" aria-controls="chPass">{{ 'my_account.change_password' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#altMob" role="tab" aria-controls="altMob">{{ 'my_account.alternate_mobile' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#delPro" role="tab" aria-controls="delPro">{{ 'my_account.delete_profile' | translate }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 marginComponent" style="margin-top:-7rem">
+        <div class="tab-content">
+          <div class="tab-pane" id="add" role="tabpanel">
+            <app-farmer-add-address></app-farmer-add-address>
+          </div>
+          <div class="tab-pane" id="chPass" role="tabpanel">
+            <app-farmer-change-password></app-farmer-change-password>
+          </div>
+          <div class="tab-pane" id="altMob" role="tabpanel">
+            <app-farmer-alternate-mobile></app-farmer-alternate-mobile>
+          </div>
+          <div class="tab-pane" id="delPro" role="tabpanel">
+            <app-farmer-delete-profile></app-farmer-delete-profile>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

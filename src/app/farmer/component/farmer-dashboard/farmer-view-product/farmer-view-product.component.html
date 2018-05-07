@@ -1,0 +1,89 @@
+<div class="container mt-100">
+  <div class="row">
+    <div *ngFor="let product of products | paginate: {itemsPerPage:8,currentPage:p}" class="col-lg-3">
+
+      <div class="card shadow p-2 mb-3" style="height: 26rem;">
+        <!-- Card image -->
+        <div class="view overlay zoom">
+          <img class="card-img-top" src="{{product.imageUrl}}" alt="Product Image">
+        </div>
+        <!-- Card content -->
+        <div class="card-body text-center">
+          <!-- Title -->
+          <h5 class="card-title">
+            <strong>{{product.productName}}</strong>
+          </h5>
+          <!-- Text -->
+          <div class="text-area">
+            <p class="card-text">
+              <b>{{ 'farmer_view_product.productid' | translate }}: </b>{{product.productId}}</p>
+            <p class="card-text">
+              <b>{{ 'farmer_view_product.description' | translate }}: </b>{{product.description}}</p>
+            <p class="card-text">
+              <b>{{ 'farmer_view_product.price' | translate }}: </b>{{product.price}}/kg.</p>
+            <p class="card-text">
+              <b>{{ 'farmer_view_product.bulk_ordr_price' | translate }}: </b>{{product.bulkOrderPrice}}/kg.</p>
+            <p class="card-text">
+              <b>{{ 'farmer_view_product.quantity' | translate }}: </b>{{product.quantity}} Kg</p>
+          </div>
+          <hr>
+          <span>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" (click)="updateProduct(product)">{{ 'farmer_view_product.update' | translate }}</button>
+          </span>
+          <span>
+            <button type="button" class="btn btn-danger" (click)="saveId(product.productId)">{{ 'farmer_view_product.delete' | translate }}</button>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
+
+<!-- Update Product Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'farmer_view_product.upadte_product' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <fieldset disabled>
+            <div class="form-group">
+              <label for="productId" class="col-form-label">{{ 'farmer_view_product.productid' | translate }}:</label>
+              <input type="text" class="form-control" id="productId" name="productId" [(ngModel)]="productId">
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <label for="description" class="col-form-label">{{ 'farmer_view_product.description' | translate }}:</label>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="price" class="col-form-label">{{ 'farmer_view_product.price' | translate }}:</label>
+            <input type="text" class="form-control" name="price" id="price" [(ngModel)]="price">
+          </div>
+          <div class="form-group">
+            <label for="bulkOrderPrice" class="col-form-label">{{ 'farmer_view_product.bulk_ordr_price' | translate }}:</label>
+            <input type="text" class="form-control" name="bulkOrderPrice" [(ngModel)]="bulkOrderPrice">
+          </div>
+          <div class="form-group">
+            <label for="quantity" class="col-form-label">{{ 'farmer_view_product.quantity' | translate }}:</label>
+            <input type="text" class="form-control" name="quantity" [(ngModel)]="quantity">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'farmer_view_product.cancel' | translate }}</button>
+            <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="updateData()">{{ 'farmer_view_product.update' | translate }}</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
